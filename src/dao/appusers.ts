@@ -5,9 +5,12 @@ import { Language } from '../sqlz/models/language'
 export function create(appUser: any): Promise<any> {
 
   return Language.findOne({
-    where: { name: 'fr' }
+    where: { email: appUser.email }
   })
     .then(language => {
+      if (language === null) {
+        throw new Error('请先注册语言类')
+      }
       return AppUser
         .create({
           id: uuid.v1(),

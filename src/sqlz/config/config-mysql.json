@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "Lmt&&112233",
-    "database": "test",
+    "database": "cloudfactory-dev",
     "host": "127.0.0.1",
     "port": 3306,
     "dialect": "mysql",

@@ -1,7 +1,6 @@
 import * as winston from 'winston'
 import { Express, Request, Response } from 'express'
-import * as LanguagesRoutes from './languages'
-import * as AppUserRoutes from './appusers'
+import { CountryRouter } from './global/CountryRouter';
 
 export function initRoutes(app: Express) {
   winston.log('info', '--> Initialisations des routes')
@@ -10,8 +9,9 @@ export function initRoutes(app: Express) {
     message: 'server is running!'
   }))
 
-  LanguagesRoutes.routes(app)
-  AppUserRoutes.routes(app)
+  // LanguagesRoutes.routes(app)
+  // AppUserRoutes.routes(app)
+  new CountryRouter(app);
 
   app.all('*', (req: Request, res: Response) => res.boom.notFound())
 }

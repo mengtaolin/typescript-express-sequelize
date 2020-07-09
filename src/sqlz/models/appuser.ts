@@ -1,6 +1,7 @@
-import { Model, STRING, UUID, Deferrable } from 'sequelize'
-import sequelize from './_index'
+import { Model } from 'sequelize-typescript'
+import sequelize from './sqlzIndex'
 import { Language } from './language'
+import { DataTypes } from 'sequelize/types'
 
 export class AppUser extends Model {
 
@@ -16,8 +17,8 @@ export class AppUserModel {
 
 AppUser.init(
   {
-    email: STRING(50),
-    pwd: STRING(50)
+    email: DataTypes.STRING(50),
+    pwd: DataTypes.STRING(50)
   },
   { sequelize, modelName: 'AppUser' }
 )

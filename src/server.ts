@@ -1,11 +1,12 @@
-import * as express from 'express'
+import express from 'express'
 import * as winston from 'winston'
-import * as boom from 'express-boom'
-import * as morgan from 'morgan'
-import * as cors from 'cors'
+import boom from 'express-boom'
+import morgan from 'morgan'
+import cors from 'cors'
 import { json, urlencoded } from 'body-parser'
 import { Express } from 'express'
 import * as routes from './routes/_index'
+import sequelize from './sqlz/models/sqlzIndex'
 
 const PORT: number = 3000
 
@@ -18,7 +19,7 @@ export class Server {
   private app: Express
 
   constructor() {
-    this.app = express()
+    this.app = express();
 
     // Express middleware
     this.app.use(cors({
@@ -34,6 +35,9 @@ export class Server {
       winston.log('info', '--> Server successfully started at port %d', PORT)
     })
     routes.initRoutes(this.app)
+    sequelize.sync({
+      force: false
+    })
   }
 
   getApp() {

@@ -1,6 +1,7 @@
-import { Model, STRING, UUID } from 'sequelize'
-import sequelize from './_index'
+import { Model } from 'sequelize-typescript'
+import sequelize from './sqlzIndex'
 import { AppUser } from './appuser'
+import { DataTypes } from 'sequelize/types'
 
 export class Language extends Model {
 }
@@ -15,8 +16,8 @@ export class LanguageModel {
 
 Language.init(
   {
-    label: STRING(255),
-    name: STRING(50)
+    label: DataTypes.STRING(255),
+    name: DataTypes.STRING(50)
   },
   { sequelize, modelName: 'Language' }
 )

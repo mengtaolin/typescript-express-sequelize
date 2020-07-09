@@ -19,7 +19,7 @@
       },
       "console": "internalConsole",
       "sourceMaps": true,
-      "outDir": "${workspaceRoot}/build",
+      "outFiles": ["${workspaceRoot}/build/*/.js"],
       "restart": true
     }
   ]
